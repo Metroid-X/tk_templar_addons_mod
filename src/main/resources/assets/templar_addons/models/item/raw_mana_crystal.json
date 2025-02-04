@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "templar_addons:item/mana_crystal"
+        "layer0": "templar_addons:item/raw_mana_crystal"
     }
 }

@@ -1,6 +1,7 @@
 package net.arcspartan.templar_addons;
 
 import com.mojang.logging.LogUtils;
+import net.arcspartan.templar_addons.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
@@ -38,13 +39,11 @@ public class TemplarAddonsMod {
 
     public TemplarAddonsMod(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
-
-        // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        ModItems.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -59,7 +58,9 @@ public class TemplarAddonsMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.RAWMANACRYSTAL);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
