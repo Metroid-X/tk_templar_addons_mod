@@ -1,6 +1,7 @@
 package net.arcspartan.templar_addons;
 
 import com.mojang.logging.LogUtils;
+import net.arcspartan.templar_addons.block.ModBlocks;
 import net.arcspartan.templar_addons.item.ModCreativeModeTabs;
 import net.arcspartan.templar_addons.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -35,6 +36,8 @@ public class TemplarAddonsMod {
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
@@ -52,7 +55,7 @@ public class TemplarAddonsMod {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.RAWMANACRYSTAL);
-            event.accept(ModItems.MANACRYSTAL);
+            event.accept(ModItems.CRUDEMANACRYSTAL);
         }
     }
 

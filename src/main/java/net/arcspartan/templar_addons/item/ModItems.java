@@ -17,9 +17,9 @@ public class ModItems {
                     .stacksTo(64)
             )
     );
-    public static final RegistryObject<Item> MANACRYSTAL = ITEMS.register("mana_crystal",
+    public static final RegistryObject<Item> CRUDEMANACRYSTAL = ITEMS.register("crude_mana_crystal",
             () -> new Item(new Item.Properties()
-                    .setId(ITEMS.key("mana_crystal"))
+                    .setId(ITEMS.key("crude_mana_crystal"))
                     .stacksTo(16)
             )
     );

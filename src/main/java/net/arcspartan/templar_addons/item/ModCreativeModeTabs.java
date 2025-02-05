@@ -1,6 +1,7 @@
 package net.arcspartan.templar_addons.item;
 
 import net.arcspartan.templar_addons.TemplarAddonsMod;
+import net.arcspartan.templar_addons.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -14,9 +15,23 @@ public class ModCreativeModeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TemplarAddonsMod.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> TEMPLAR_ITEMS_TAB = CREATIVE_MODE_TABS.register("templar_items_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.MANACRYSTAL.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CRUDEMANACRYSTAL.get()))
                     .title(Component.translatable("creativetab.templar_addons.templar_items"))
-                    .build());
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.RAWMANACRYSTAL.get());
+                        output.accept(ModItems.CRUDEMANACRYSTAL.get());
+
+                    }).build());
+
+
+    public static final RegistryObject<CreativeModeTab> TEMPLAR_BLOCKS_TAB = CREATIVE_MODE_TABS.register("templar_blocks_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CRUDEMANACRYSTAL.get()))
+                    .title(Component.translatable("creativetab.templar_addons.templar_blocks"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModBlocks.MANA_CRYSTAL_ORE_STONE.get());
+                        output.accept(ModBlocks.MANA_CRYSTAL_ORE_DEEP.get());
+
+                    }).build());
 
 
 

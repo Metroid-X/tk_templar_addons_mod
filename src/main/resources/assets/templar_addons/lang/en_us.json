@@ -1,4 +1,6 @@
 {
     "item.templar_addons.raw_mana_crystal": "Raw Mana Crystal",
-    "creativetab.templar_addons.templar_items": "Templar Items"
+    "item.templar_addons.crude_mana_crystal": "Crude Mana Crystal",
+    "creativetab.templar_addons.templar_items": "Templar Items",
+    "creativetab.templar_addons.templar_blocks": "Templar Blocks"
 }
