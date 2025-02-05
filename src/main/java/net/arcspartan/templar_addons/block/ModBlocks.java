@@ -23,22 +23,21 @@ public class ModBlocks {
     public static final RegistryObject<Block> MANA_CRYSTAL_ORE_STONE = registerBlock("mana_crystal_vein",
             () -> new Block(BlockBehaviour.Properties.of()
                     .setId(BLOCKS.key("mana_crystal_vein"))
-                    .strength(1f).requiresCorrectToolForDrops().sound(SoundType.STONE)
+                    .requiresCorrectToolForDrops().strength(3.0f, 4.0f).sound(SoundType.STONE)
             )
     );
 
     public static final RegistryObject<Block> MANA_CRYSTAL_ORE_DEEP = registerBlock("deepslate_mana_crystal_vein",
             () -> new Block(BlockBehaviour.Properties.of()
                     .setId(BLOCKS.key("deepslate_mana_crystal_vein"))
-//                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)
-                    .strength(1.5f)
+                    .requiresCorrectToolForDrops().strength(5.0f).sound(SoundType.DEEPSLATE)
             )
     );
 
     public static final RegistryObject<Block> RAW_MANA_CRYSTAL_BLOCK = registerBlock("raw_mana_crystal_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .setId(BLOCKS.key("raw_mana_crystal_block"))
-//                    .strength(3f).requiresCorrectToolForDrops().sound(SoundType.TUFF)
+                    .requiresCorrectToolForDrops().strength(3.0f).sound(SoundType.TUFF)
             )
     );
 
