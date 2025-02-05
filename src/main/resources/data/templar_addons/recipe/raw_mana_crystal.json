@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {"item": "templar_addons:raw_mana_crystal_block"}
+    "templar_addons:raw_mana_crystal_block"
   ],
   "result": {
     "id": "templar_addons:raw_mana_crystal",

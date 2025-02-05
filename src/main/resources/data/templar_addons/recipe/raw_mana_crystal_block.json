@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "M": {
-      "item": "templar_addons:item/raw_mana_crystal"
-    }
+    "M": "templar_addons:raw_mana_crystal"
   },
   "pattern": [
     "MMM",
