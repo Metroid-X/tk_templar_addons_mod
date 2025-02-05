@@ -1,6 +1,9 @@
 {
     "item.templar_addons.raw_mana_crystal": "Raw Mana Crystal",
+    "block.templar_addons.raw_mana_crystal_block": "Raw Mana Crystal Block",
     "item.templar_addons.crude_mana_crystal": "Crude Mana Crystal",
+    "block.templar_addons.mana_crystal_vein": "Mana Crystal Vein",
+    "block.templar_addons.deepslate_mana_crystal_vein": "Deepslate Mana Crystal Vein",
     "creativetab.templar_addons.templar_items": "Templar Items",
     "creativetab.templar_addons.templar_blocks": "Templar Blocks"
 }

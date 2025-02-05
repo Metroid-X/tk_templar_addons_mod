@@ -25,11 +25,12 @@ public class ModCreativeModeTabs {
 
 
     public static final RegistryObject<CreativeModeTab> TEMPLAR_BLOCKS_TAB = CREATIVE_MODE_TABS.register("templar_blocks_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CRUDEMANACRYSTAL.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.RAW_MANA_CRYSTAL_BLOCK.get()))
                     .title(Component.translatable("creativetab.templar_addons.templar_blocks"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.MANA_CRYSTAL_ORE_STONE.get());
                         output.accept(ModBlocks.MANA_CRYSTAL_ORE_DEEP.get());
+                        output.accept(ModBlocks.RAW_MANA_CRYSTAL_BLOCK.get());
 
                     }).build());
 

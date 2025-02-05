@@ -30,7 +30,14 @@ public class ModBlocks {
     public static final RegistryObject<Block> MANA_CRYSTAL_ORE_DEEP = registerBlock("deepslate_mana_crystal_vein",
             () -> new Block(BlockBehaviour.Properties.of()
                     .setId(BLOCKS.key("deepslate_mana_crystal_vein"))
-                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE)
+                    .strength(5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)
+            )
+    );
+
+    public static final RegistryObject<Block> RAW_MANA_CRYSTAL_BLOCK = registerBlock("raw_mana_crystal_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .setId(BLOCKS.key("raw_mana_crystal_block"))
+                    .strength(3f).requiresCorrectToolForDrops().sound(SoundType.TUFF)
             )
     );
 
@@ -45,7 +52,8 @@ public class ModBlocks {
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
         ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()
-
+                .setId(ITEMS.key(name))
+                .stacksTo(64)
             )
         );
     }

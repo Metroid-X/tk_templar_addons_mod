@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "templar_addons:block/mana_crystal_vein"
+      "model": "templar_addons:block/mana_crystal_vein_block"
     }
   }
 }
