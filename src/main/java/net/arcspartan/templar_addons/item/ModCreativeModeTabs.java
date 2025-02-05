@@ -20,6 +20,7 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.RAWMANACRYSTAL.get());
                         output.accept(ModItems.CRUDEMANACRYSTAL.get());
+                        output.accept(ModItems.MANACRYSTAL.get());
 
                     }).build());
 
