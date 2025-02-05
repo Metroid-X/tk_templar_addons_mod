@@ -1,7 +1,6 @@
 package net.arcspartan.templar_addons.block;
 
 import net.arcspartan.templar_addons.TemplarAddonsMod;
-import net.arcspartan.templar_addons.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -23,12 +22,14 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> MANA_CRYSTAL_ORE_STONE = registerBlock("mana_crystal_vein",
             () -> new Block(BlockBehaviour.Properties.of()
+                    .setId(BLOCKS.key("mana_crystal_vein"))
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE)
             )
     );
 
     public static final RegistryObject<Block> MANA_CRYSTAL_ORE_DEEP = registerBlock("deepslate_mana_crystal_vein",
             () -> new Block(BlockBehaviour.Properties.of()
+                    .setId(BLOCKS.key("deepslate_mana_crystal_vein"))
                     .strength(4f).requiresCorrectToolForDrops().sound(SoundType.STONE)
             )
     );
