@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "templar_addons:item/crushed_conductive_mix"
-    }
+  "model": {
+    "type": "minecraft:model",
+    "model": "templar_addons:item/crushed_conductive_mix"
+  }
 }
