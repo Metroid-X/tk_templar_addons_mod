@@ -26,6 +26,20 @@ public class ModItems {
             )
     );
 
+    public static final RegistryObject<Item> CRUSHED_CONDUCTIVE_MIX = ITEMS.register("crushed_conductive_mix",
+            () -> new Item(new Item.Properties()
+                    .setId(ITEMS.key("crushed_conductive_mix"))
+                    .stacksTo(64)
+            )
+    );
+
+    public static final RegistryObject<Item> RAW_ELECTRUM = ITEMS.register("raw_electrum",
+            () -> new Item(new Item.Properties()
+                    .setId(ITEMS.key("raw_electrum"))
+                    .stacksTo(64)
+            )
+    );
+
     public static final RegistryObject<Item> SILVER_INGOT = ITEMS.register("silver_ingot",
             () -> new Item(new Item.Properties()
                     .setId(ITEMS.key("silver_ingot"))

@@ -19,6 +19,8 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.templar_addons.templar_items"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.RAW_SILVER.get());
+                        output.accept(ModItems.CRUSHED_CONDUCTIVE_MIX.get());
+                        output.accept(ModItems.RAW_ELECTRUM.get());
                         output.accept(ModItems.SILVER_INGOT.get());
                         output.accept(ModItems.ELECTRUM_INGOT.get());
                         output.accept(ModItems.RAW_MANA_CRYSTAL.get());
