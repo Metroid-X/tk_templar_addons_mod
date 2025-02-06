@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "electrum_ingot",
+  "group": "silver_ingot",
   "ingredients": [
-    "templar_addons:electrum_block"
+    "templar_addons:silver_block"
   ],
   "result": {
-    "id": "templar_addons:electrum_ingot",
+    "id": "templar_addons:silver_ingot",
     "count": 9
   }
 }

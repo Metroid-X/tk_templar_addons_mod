@@ -1,12 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "electrum_ingot",
   "ingredients": [
-    "templar_addons:electrum_block"
+    "templar_addons:raw_electrum_block"
   ],
   "result": {
-    "id": "templar_addons:electrum_ingot",
+    "id": "templar_addons:raw_electrum",
     "count": 9
   }
 }

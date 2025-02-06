@@ -39,6 +39,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.SILVER_ORE_STONE.get());
                         output.accept(ModBlocks.SILVER_ORE_DEEP.get());
                         output.accept(ModBlocks.RAW_MANA_CRYSTAL_BLOCK.get());
+                        output.accept(ModBlocks.RAW_SILVER_BLOCK.get());
+                        output.accept(ModBlocks.RAW_ELECTRUM_BLOCK.get());
+                        output.accept(ModBlocks.SILVER_BLOCK.get());
                         output.accept(ModBlocks.ELECTRUM_BLOCK.get());
                         output.accept(ModBlocks.IMBUED_ELECTRUM_BLOCK.get());
 

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 175,
+  "experience": 1.4,
+  "group": "silver_ingot",
+  "ingredient": "templar_addons:silver_ore",
+  "result": {
+    "id": "templar_addons:silver_ingot"
+  }
+}

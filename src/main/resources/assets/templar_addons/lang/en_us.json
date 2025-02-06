@@ -3,19 +3,34 @@
     "item.templar_addons.raw_silver": "Raw Silver",
     "item.templar_addons.crushed_conductive_mix": "Crushed Conductive Mix",
     "item.templar_addons.raw_electrum": "Raw Electrum",
+
+
     "item.templar_addons.silver_ingot": "Silver Ingot",
     "item.templar_addons.electrum_ingot": "Electrum Ingot",
+
+
     "item.templar_addons.crude_mana_crystal": "Crude Mana Crystal",
-    "item.templar_addons.infusion_rod": "Mana Infusion Rod",
     "item.templar_addons.mana_crystal": "Mana Crystal",
-    "item.templar_addons.mana_crystal_vein": "Mana Crystal Vein",
-    "item.templar_addons.deepslate_mana_crystal_vein": "Deepslate Mana Crystal Vein",
+
+
+    "item.templar_addons.mana_crystal_or": "Mana Crystal Vein",
+    "item.templar_addons.deepslate_mana_crystal_ore": "Deepslate Mana Crystal Vein",
     "item.templar_addons.silver_ore": "Silver Ore",
     "item.templar_addons.deepslate_silver_ore": "Deepslate Silver Ore",
+
+
     "item.templar_addons.raw_mana_crystal_block": "Raw Mana Crystal Block",
+    "item.templar_addons.silver_block": "Silver Block",
     "item.templar_addons.electrum_block": "Electrum Block",
     "item.templar_addons.imbued_electrum_block": "Imbued Electrum Block",
+
+
+    "item.templar_addons.infusion_rod": "Mana Infusion Rod",
+
+
     "creativetab.templar_addons.templar_items": "Templar Items",
     "creativetab.templar_addons.templar_blocks": "Templar Blocks",
-    "creativetab.templar_addons.templar_magic": "Templar Magic Items"
+    "creativetab.templar_addons.templar_magic": "Templar Mod Magic Items",
+    "creativetab.templar_addons.templar_spells": "Templar Mod Spells",
+    "creativetab.templar_addons.spell_components": "Templar Spell Components"
 }

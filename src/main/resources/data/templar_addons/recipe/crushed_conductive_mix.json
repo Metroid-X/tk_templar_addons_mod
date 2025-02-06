@@ -1,15 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "key": {
-    "c": "minecraft:raw_copper",
-    "s": "templar_addons:raw_silver",
-    "g": "minecraft:raw_gold"
-  },
-  "pattern": [
-    "sgs",
-    "scs",
-    "sgs"
+  "pattern": [],
+  "show_notification": true,
+  "ingredients": [
+    "templar_addons:raw_silver",
+    "templar_addons:raw_silver",
+    "minecraft:raw_gold",
+    "minecraft:raw_copper",
+    "minecraft:raw_gold",
+    "templar_addons:raw_silver",
+    "templar_addons:raw_silver"
   ],
   "result": {
     "id": "templar_addons:crushed_conductive_mix",
