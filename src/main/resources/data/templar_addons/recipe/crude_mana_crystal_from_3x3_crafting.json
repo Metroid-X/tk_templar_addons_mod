@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "M": "templar_addons:raw_mana_crystal_block",
+    "M": "templar_addons:raw_mana_crystal",
     "E": "minecraft:ender_pearl"
   },
   "pattern": [
-    " E ",
-    "EME",
-    " E "
+    " M ",
+    "MEM",
+    " M "
   ],
   "result": {
     "id": "templar_addons:crude_mana_crystal",
-    "count": 1
+    "count": 2
   }
 }

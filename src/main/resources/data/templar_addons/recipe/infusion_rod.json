@@ -2,14 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "s": "minecraft:stick",
+    "/": "minecraft:stick",
     "m": "templar_addons:crude_mana_crystal",
-    "i": "minecraft:iron_ingot"
+    "S": "templar_addons:silver_ingot"
   },
   "pattern": [
-    " im",
-    " si",
-    "s  "
+    " Sm",
+    " /S",
+    "/  "
   ],
   "result": {
     "id": "templar_addons:infusion_rod",

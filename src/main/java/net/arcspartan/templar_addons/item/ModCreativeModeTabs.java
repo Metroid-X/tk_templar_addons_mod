@@ -15,12 +15,15 @@ public class ModCreativeModeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TemplarAddonsMod.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> TEMPLAR_ITEMS_TAB = CREATIVE_MODE_TABS.register("templar_items_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CRUDEMANACRYSTAL.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CRUDE_MANA_CRYSTAL.get()))
                     .title(Component.translatable("creativetab.templar_addons.templar_items"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.RAWMANACRYSTAL.get());
-                        output.accept(ModItems.CRUDEMANACRYSTAL.get());
-                        output.accept(ModItems.MANACRYSTAL.get());
+                        output.accept(ModItems.RAW_SILVER.get());
+                        output.accept(ModItems.SILVER_INGOT.get());
+                        output.accept(ModItems.ELECTRUM_INGOT.get());
+                        output.accept(ModItems.RAW_MANA_CRYSTAL.get());
+                        output.accept(ModItems.CRUDE_MANA_CRYSTAL.get());
+                        output.accept(ModItems.MANA_CRYSTAL.get());
 
                     }).build());
 
@@ -40,7 +43,7 @@ public class ModCreativeModeTabs {
                     }).build());
 
     public static final RegistryObject<CreativeModeTab> TEMPLAR_MAGIC_TAB = CREATIVE_MODE_TABS.register("templar_magic_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.RAW_MANA_CRYSTAL_BLOCK.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.INFUSION_ROD.get()))
                     .title(Component.translatable("creativetab.templar_addons.templar_magic"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.INFUSION_ROD.get());
