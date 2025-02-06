@@ -16,14 +16,14 @@ import java.util.Map;
 
 
 
-public class BlockEnchanterItem extends Item {
+public class EnchanterItem extends Item {
     private static final Map<Block, Block> ENCHANT_MAP =
             Map.of(
                     ModBlocks.ELECTRUM_BLOCK.get(), ModBlocks.IMBUED_ELECTRUM_BLOCK.get()
             );
 
 
-    public BlockEnchanterItem(Properties pProperties) {
+    public EnchanterItem(Properties pProperties) {
         super(pProperties);
     }
 

@@ -1,6 +1,7 @@
 package net.arcspartan.templar_addons.item;
 
 import net.arcspartan.templar_addons.TemplarAddonsMod;
+import net.arcspartan.templar_addons.item.custom.EnchanterItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -34,7 +35,7 @@ public class ModItems {
 
 
     public static final RegistryObject<Item> INFUSION_ROD = ITEMS.register("infusion_rod",
-            () -> new Item(new Item.Properties().setId(ITEMS.key("infusion_rod"))
+            () -> new EnchanterItem(new Item.Properties().setId(ITEMS.key("infusion_rod"))
                     .durability(32))
             );
 
