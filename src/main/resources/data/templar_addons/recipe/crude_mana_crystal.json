@@ -6,7 +6,9 @@
     "E": "minecraft:ender_pearl"
   },
   "pattern": [
-    "EME"
+    " E ",
+    "EME",
+    " E "
   ],
   "result": {
     "id": "templar_addons:crude_mana_crystal",

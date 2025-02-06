@@ -4,7 +4,11 @@
     "item.templar_addons.mana_crystal": "Mana Crystal",
     "item.templar_addons.mana_crystal_vein": "Mana Crystal Vein",
     "item.templar_addons.deepslate_mana_crystal_vein": "Deepslate Mana Crystal Vein",
+    "item.templar_addons.silver_ore": "Silver Ore",
+    "item.templar_addons.deepslate_silver_ore": "Deepslate Silver Ore",
     "item.templar_addons.raw_mana_crystal_block": "Raw Mana Crystal Block",
+    "item.templar_addons.electrum_block": "Electrum Block",
+    "item.templar_addons.imbued_electrum_block": "Imbued Electrum Block",
     "creativetab.templar_addons.templar_items": "Templar Items",
     "creativetab.templar_addons.templar_blocks": "Templar Blocks"
 }

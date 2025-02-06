@@ -31,7 +31,11 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.MANA_CRYSTAL_ORE_STONE.get());
                         output.accept(ModBlocks.MANA_CRYSTAL_ORE_DEEP.get());
+                        output.accept(ModBlocks.SILVER_ORE_STONE.get());
+                        output.accept(ModBlocks.SILVER_ORE_DEEP.get());
                         output.accept(ModBlocks.RAW_MANA_CRYSTAL_BLOCK.get());
+                        output.accept(ModBlocks.ELECTRUM_BLOCK.get());
+                        output.accept(ModBlocks.IMBUED_ELECTRUM_BLOCK.get());
 
                     }).build());
 

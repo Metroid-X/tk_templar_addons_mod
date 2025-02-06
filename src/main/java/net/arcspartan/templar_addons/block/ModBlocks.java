@@ -23,7 +23,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> MANA_CRYSTAL_ORE_STONE = registerBlock("mana_crystal_vein",
             () -> new Block(BlockBehaviour.Properties.of()
                     .setId(BLOCKS.key("mana_crystal_vein"))
-                    .requiresCorrectToolForDrops().strength(3.0f, 4.0f).sound(SoundType.STONE)
+                    .requiresCorrectToolForDrops().strength(4.0f, 4.0f).sound(SoundType.STONE)
             )
     );
 
@@ -34,10 +34,38 @@ public class ModBlocks {
             )
     );
 
+    public static final RegistryObject<Block> SILVER_ORE_STONE = registerBlock("silver_ore",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .setId(BLOCKS.key("silver_ore"))
+                    .requiresCorrectToolForDrops().strength(4.0f, 4.0f).sound(SoundType.STONE)
+            )
+    );
+
+    public static final RegistryObject<Block> SILVER_ORE_DEEP = registerBlock("deepslate_silver_ore",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .setId(BLOCKS.key("deepslate_silver_ore"))
+                    .requiresCorrectToolForDrops().strength(5.0f).sound(SoundType.DEEPSLATE)
+            )
+    );
+
     public static final RegistryObject<Block> RAW_MANA_CRYSTAL_BLOCK = registerBlock("raw_mana_crystal_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .setId(BLOCKS.key("raw_mana_crystal_block"))
                     .requiresCorrectToolForDrops().strength(3.0f).sound(SoundType.TUFF)
+            )
+    );
+
+    public static final RegistryObject<Block> ELECTRUM_BLOCK = registerBlock("electrum_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .setId(BLOCKS.key("electrum_block"))
+                    .requiresCorrectToolForDrops().strength(4.0f).sound(SoundType.METAL)
+            )
+    );
+
+    public static final RegistryObject<Block> IMBUED_ELECTRUM_BLOCK = registerBlock("imbued_electrum_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .setId(BLOCKS.key("imbued_electrum_block"))
+                    .requiresCorrectToolForDrops().strength(4.0f).sound(SoundType.COPPER)
             )
     );
 
