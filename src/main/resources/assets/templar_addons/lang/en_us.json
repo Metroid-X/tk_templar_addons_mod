@@ -10,5 +10,6 @@
     "item.templar_addons.electrum_block": "Electrum Block",
     "item.templar_addons.imbued_electrum_block": "Imbued Electrum Block",
     "creativetab.templar_addons.templar_items": "Templar Items",
-    "creativetab.templar_addons.templar_blocks": "Templar Blocks"
+    "creativetab.templar_addons.templar_blocks": "Templar Blocks",
+    "creativetab.templar_addons.templar_magic": "Templar Magic Items"
 }

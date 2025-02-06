@@ -39,6 +39,14 @@ public class ModCreativeModeTabs {
 
                     }).build());
 
+    public static final RegistryObject<CreativeModeTab> TEMPLAR_MAGIC_TAB = CREATIVE_MODE_TABS.register("templar_magic_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.RAW_MANA_CRYSTAL_BLOCK.get()))
+                    .title(Component.translatable("creativetab.templar_addons.templar_magic"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.INFUSION_ROD.get());
+
+                    }).build());
+
 
 
     public static void register(IEventBus eventBus) {

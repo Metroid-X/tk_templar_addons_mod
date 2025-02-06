@@ -33,7 +33,10 @@ public class ModItems {
     );
 
 
-
+    public static final RegistryObject<Item> INFUSION_ROD = ITEMS.register("infusion_rod",
+            () -> new Item(new Item.Properties().setId(ITEMS.key("infusion_rod"))
+                    .durability(32))
+            );
 
 
 
