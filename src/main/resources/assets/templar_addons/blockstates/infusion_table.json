@@ -1,0 +1,263 @@
+{
+  "variants": {
+    "infusion_table_charges=0": {
+      "model": "templar_addons:block/infusion_table"
+    }
+  ,
+    "infusion_table_charges=1": {
+      "model": "templar_addons:block/infusion_table_1"
+    }
+  ,
+    "infusion_table_charges=2": {
+      "model": "templar_addons:block/infusion_table_2"
+    }
+  ,
+    "infusion_table_charges=3": {
+      "model": "templar_addons:block/infusion_table_3"
+    }
+  ,
+    "infusion_table_charges=4": {
+      "model": "templar_addons:block/infusion_table_4"
+    }
+  ,
+    "infusion_table_charges=5": {
+      "model": "templar_addons:block/infusion_table_5"
+    }
+  ,
+    "infusion_table_charges=6": {
+      "model": "templar_addons:block/infusion_table_6"
+    }
+  ,
+    "infusion_table_charges=7": {
+      "model": "templar_addons:block/infusion_table_7"
+    }
+  ,
+    "infusion_table_charges=8": {
+      "model": "templar_addons:block/infusion_table_8"
+    }
+  ,
+    "infusion_table_charges=9": {
+      "model": "templar_addons:block/infusion_table_9"
+    }
+  ,
+    "infusion_table_charges=10": {
+      "model": "templar_addons:block/infusion_table_10"
+    }
+  ,
+    "infusion_table_charges=11": {
+      "model": "templar_addons:block/infusion_table_11"
+    }
+  ,
+    "infusion_table_charges=12": {
+      "model": "templar_addons:block/infusion_table_12"
+    }
+  ,
+    "infusion_table_charges=13": {
+      "model": "templar_addons:block/infusion_table_13"
+    }
+  ,
+    "infusion_table_charges=14": {
+      "model": "templar_addons:block/infusion_table_14"
+    }
+  ,
+    "infusion_table_charges=15": {
+      "model": "templar_addons:block/infusion_table_15"
+    }
+  ,
+    "infusion_table_charges=16": {
+      "model": "templar_addons:block/infusion_table_16"
+    }
+  ,
+    "infusion_table_charges=17": {
+      "model": "templar_addons:block/infusion_table_17"
+    }
+  ,
+    "infusion_table_charges=18": {
+      "model": "templar_addons:block/infusion_table_18"
+    }
+  ,
+    "infusion_table_charges=19": {
+      "model": "templar_addons:block/infusion_table_19"
+    }
+  ,
+    "infusion_table_charges=20": {
+      "model": "templar_addons:block/infusion_table_20"
+    }
+  ,
+    "infusion_table_charges=21": {
+      "model": "templar_addons:block/infusion_table_21"
+    }
+  ,
+    "infusion_table_charges=22": {
+      "model": "templar_addons:block/infusion_table_22"
+    }
+  ,
+    "infusion_table_charges=23": {
+      "model": "templar_addons:block/infusion_table_23"
+    }
+  ,
+    "infusion_table_charges=24": {
+      "model": "templar_addons:block/infusion_table_24"
+    }
+  ,
+    "infusion_table_charges=25": {
+      "model": "templar_addons:block/infusion_table_25"
+    }
+  ,
+    "infusion_table_charges=26": {
+      "model": "templar_addons:block/infusion_table_26"
+    }
+  ,
+    "infusion_table_charges=27": {
+      "model": "templar_addons:block/infusion_table_27"
+    }
+  ,
+    "infusion_table_charges=28": {
+      "model": "templar_addons:block/infusion_table_28"
+    }
+  ,
+    "infusion_table_charges=29": {
+      "model": "templar_addons:block/infusion_table_29"
+    }
+  ,
+    "infusion_table_charges=30": {
+      "model": "templar_addons:block/infusion_table_30"
+    }
+  ,
+    "infusion_table_charges=31": {
+      "model": "templar_addons:block/infusion_table_31"
+    }
+  ,
+    "infusion_table_charges=32": {
+      "model": "templar_addons:block/infusion_table_32"
+    }
+  ,
+    "infusion_table_charges=33": {
+      "model": "templar_addons:block/infusion_table_33"
+    }
+  ,
+    "infusion_table_charges=34": {
+      "model": "templar_addons:block/infusion_table_34"
+    }
+  ,
+    "infusion_table_charges=35": {
+      "model": "templar_addons:block/infusion_table_35"
+    }
+  ,
+    "infusion_table_charges=36": {
+      "model": "templar_addons:block/infusion_table_36"
+    }
+  ,
+    "infusion_table_charges=37": {
+      "model": "templar_addons:block/infusion_table_37"
+    }
+  ,
+    "infusion_table_charges=38": {
+      "model": "templar_addons:block/infusion_table_38"
+    }
+  ,
+    "infusion_table_charges=39": {
+      "model": "templar_addons:block/infusion_table_39"
+    }
+  ,
+    "infusion_table_charges=40": {
+      "model": "templar_addons:block/infusion_table_40"
+    }
+  ,
+    "infusion_table_charges=41": {
+      "model": "templar_addons:block/infusion_table_41"
+    }
+  ,
+    "infusion_table_charges=42": {
+      "model": "templar_addons:block/infusion_table_42"
+    }
+  ,
+    "infusion_table_charges=43": {
+      "model": "templar_addons:block/infusion_table_43"
+    }
+  ,
+    "infusion_table_charges=44": {
+      "model": "templar_addons:block/infusion_table_44"
+    }
+  ,
+    "infusion_table_charges=45": {
+      "model": "templar_addons:block/infusion_table_45"
+    }
+  ,
+    "infusion_table_charges=46": {
+      "model": "templar_addons:block/infusion_table_46"
+    }
+  ,
+    "infusion_table_charges=47": {
+      "model": "templar_addons:block/infusion_table_47"
+    }
+  ,
+    "infusion_table_charges=48": {
+      "model": "templar_addons:block/infusion_table_48"
+    }
+  ,
+    "infusion_table_charges=49": {
+      "model": "templar_addons:block/infusion_table_49"
+    }
+  ,
+    "infusion_table_charges=50": {
+      "model": "templar_addons:block/infusion_table_50"
+    }
+  ,
+    "infusion_table_charges=51": {
+      "model": "templar_addons:block/infusion_table_51"
+    }
+  ,
+    "infusion_table_charges=52": {
+      "model": "templar_addons:block/infusion_table_52"
+    }
+  ,
+    "infusion_table_charges=53": {
+      "model": "templar_addons:block/infusion_table_53"
+    }
+  ,
+    "infusion_table_charges=54": {
+      "model": "templar_addons:block/infusion_table_54"
+    }
+  ,
+    "infusion_table_charges=55": {
+      "model": "templar_addons:block/infusion_table_55"
+    }
+  ,
+    "infusion_table_charges=56": {
+      "model": "templar_addons:block/infusion_table_56"
+    }
+  ,
+    "infusion_table_charges=57": {
+      "model": "templar_addons:block/infusion_table_57"
+    }
+  ,
+    "infusion_table_charges=58": {
+      "model": "templar_addons:block/infusion_table_58"
+    }
+  ,
+    "infusion_table_charges=59": {
+      "model": "templar_addons:block/infusion_table_59"
+    }
+  ,
+    "infusion_table_charges=60": {
+      "model": "templar_addons:block/infusion_table_60"
+    }
+  ,
+    "infusion_table_charges=61": {
+      "model": "templar_addons:block/infusion_table_61"
+    }
+  ,
+    "infusion_table_charges=62": {
+      "model": "templar_addons:block/infusion_table_62"
+    }
+  ,
+    "infusion_table_charges=63": {
+      "model": "templar_addons:block/infusion_table_63"
+    }
+  ,
+    "infusion_table_charges=64": {
+      "model": "templar_addons:block/infusion_table_64"
+    }
+  }
+}

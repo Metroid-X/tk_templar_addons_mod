@@ -44,6 +44,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.SILVER_BLOCK.get());
                         output.accept(ModBlocks.ELECTRUM_BLOCK.get());
                         output.accept(ModBlocks.IMBUED_ELECTRUM_BLOCK.get());
+                        output.accept(ModBlocks.BLASTED_SMOOTH_STONE.get());
 
                     }).build());
 
@@ -52,6 +53,14 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.templar_addons.templar_magic"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.INFUSION_ROD.get());
+
+                    }).build());
+
+    public static final RegistryObject<CreativeModeTab> TEMPLAR_MAGIC_BLOCKS_TAB = CREATIVE_MODE_TABS.register("templar_magic_blocks_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.INFUSION_TABLE_BLOCK.get()))
+                    .title(Component.translatable("creativetab.templar_addons.templar_magic_blocks"))
+                    .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModBlocks.INFUSION_TABLE_BLOCK.get());
 
                     }).build());
 

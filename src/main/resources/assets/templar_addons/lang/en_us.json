@@ -26,11 +26,13 @@
 
 
     "item.templar_addons.infusion_rod": "Mana Infusion Rod",
+    "item.templar_addons.infusion_table": "Mana Infusion Table",
 
 
     "creativetab.templar_addons.templar_items": "Templar Items",
     "creativetab.templar_addons.templar_blocks": "Templar Blocks",
     "creativetab.templar_addons.templar_magic": "Templar Mod Magic Items",
     "creativetab.templar_addons.templar_spells": "Templar Mod Spells",
-    "creativetab.templar_addons.spell_components": "Templar Spell Components"
+    "creativetab.templar_addons.spell_components": "Templar Spell Components",
+    "creativetab.templar_addons.templar_magic_blocks": "Templar Magic Blocks"
 }

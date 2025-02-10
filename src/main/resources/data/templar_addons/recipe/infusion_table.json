@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": "templar_addons:mana_crystal",
+    "I": "templar_addons:electrum_ingot",
+    "i": "templar_addons:silver_ingot",
+    "B": "templar_addons:blasted_smooth_stone"
+  },
+  "pattern": [
+    "IMI",
+    "iBi",
+    "iBi"
+  ],
+  "result": {
+    "id": "templar_addons:infusion_table",
+    "count": 1
+  }
+}

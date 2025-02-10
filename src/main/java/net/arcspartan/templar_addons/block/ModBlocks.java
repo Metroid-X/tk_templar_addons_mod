@@ -1,10 +1,10 @@
 package net.arcspartan.templar_addons.block;
 
 import net.arcspartan.templar_addons.TemplarAddonsMod;
+import net.arcspartan.templar_addons.block.custom.InfusionTableBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -90,6 +90,22 @@ public class ModBlocks {
             )
     );
 
+    public static final RegistryObject<Block> BLASTED_SMOOTH_STONE = registerBlock("blasted_smooth_stone",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .setId(BLOCKS.key("blasted_smooth_stone"))
+                    .requiresCorrectToolForDrops().strength(4.0f).sound(SoundType.STONE)
+            )
+    );
+
+    public static final RegistryObject<Block> INFUSION_TABLE_BLOCK = registerBlock("infusion_table",
+            () -> new InfusionTableBlock(BlockBehaviour.Properties.of()
+                    .setId(BLOCKS.key("infusion_table"))
+                    .requiresCorrectToolForDrops().strength(3.0f).sound(SoundType.STONE)
+                    .lightLevel(blockState -> InfusionTableBlock.getScaledChargeLevel(blockState, 15))
+            ));
+
+
+
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
@@ -106,6 +122,7 @@ public class ModBlocks {
             )
         );
     }
+
 
 
 

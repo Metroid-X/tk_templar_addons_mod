@@ -11,6 +11,9 @@
     "templar_addons:raw_electrum_block",
     "templar_addons:raw_silver_block",
 
+    "templar_addons:blasted_smooth_stone",
+    "templar_addons:infusion_table",
+
     "templar_addons:silver_block",
     "templar_addons:electrum_block",
     "templar_addons:imbued_electrum_block"
