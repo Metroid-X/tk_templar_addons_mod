@@ -3,11 +3,11 @@
   "category": "misc",
   "key": {
     "M": "templar_addons:crude_mana_crystal",
-    "D": "minecraft:diamond"
+    "C": "#templar_addons:mana_gem_center"
   },
   "pattern": [
     "MMM",
-    "MDM",
+    "MCM",
     "MMM"
   ],
   "result": {

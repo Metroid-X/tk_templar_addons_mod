@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "templar_addons:imbued_electrum_block"
+          "name": "templar_addons:infused_electrum_block"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "templar_addons:blocks/imbued_electrum_block"
+  "random_sequence": "templar_addons:blocks/infused_electrum_block"
 }

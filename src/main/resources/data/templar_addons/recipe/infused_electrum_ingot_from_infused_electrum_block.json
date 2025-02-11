@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "infused_electrum_ingot",
+  "ingredients": [
+    "templar_addons:infused_electrum_block"
+  ],
+  "result": {
+    "id": "templar_addons:infused_electrum_ingot",
+    "count": 9
+  }
+}

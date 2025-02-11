@@ -26,6 +26,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_MANA_CRYSTAL.get());
                         output.accept(ModItems.CRUDE_MANA_CRYSTAL.get());
                         output.accept(ModItems.MANA_CRYSTAL.get());
+                        output.accept(ModItems.INFUSED_LAPIS.get());
+                        output.accept(ModItems.INFUSED_SILVER_INGOT.get());
+                        output.accept(ModItems.INFUSED_ELECTRUM_INGOT.get());
 
                     }).build());
 
@@ -43,7 +46,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.RAW_ELECTRUM_BLOCK.get());
                         output.accept(ModBlocks.SILVER_BLOCK.get());
                         output.accept(ModBlocks.ELECTRUM_BLOCK.get());
-                        output.accept(ModBlocks.IMBUED_ELECTRUM_BLOCK.get());
+                        output.accept(ModBlocks.INFUSED_ELECTRUM_BLOCK.get());
                         output.accept(ModBlocks.BLASTED_SMOOTH_STONE.get());
 
                     }).build());

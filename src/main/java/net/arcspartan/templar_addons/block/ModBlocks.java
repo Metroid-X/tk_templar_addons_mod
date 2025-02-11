@@ -83,9 +83,9 @@ public class ModBlocks {
             )
     );
 
-    public static final RegistryObject<Block> IMBUED_ELECTRUM_BLOCK = registerBlock("imbued_electrum_block",
+    public static final RegistryObject<Block> INFUSED_ELECTRUM_BLOCK = registerBlock("infused_electrum_block",
             () -> new Block(BlockBehaviour.Properties.of()
-                    .setId(BLOCKS.key("imbued_electrum_block"))
+                    .setId(BLOCKS.key("infused_electrum_block"))
                     .requiresCorrectToolForDrops().strength(4.0f).sound(SoundType.COPPER)
             )
     );

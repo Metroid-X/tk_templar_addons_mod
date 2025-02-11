@@ -29,7 +29,7 @@ import java.util.Map;
 public class EnchanterItem extends Item {
     private static final Map<Block, Block> ENCHANT_MAP =
             Map.of(
-                    ModBlocks.ELECTRUM_BLOCK.get(), ModBlocks.IMBUED_ELECTRUM_BLOCK.get()
+                    ModBlocks.ELECTRUM_BLOCK.get(), ModBlocks.INFUSED_ELECTRUM_BLOCK.get()
             );
 
 
@@ -54,7 +54,7 @@ public class EnchanterItem extends Item {
                         item -> pContext.getPlayer().onEquippedItemBroken(item, EquipmentSlot.MAINHAND)
                 );
 
-            }   level.playSound(null, pContext.getClickedPos(), SoundEvents.ALLAY_AMBIENT_WITH_ITEM, SoundSource.BLOCKS);
+            }   level.playSound(null, pContext.getClickedPos(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS);
         } else {
             player.displayClientMessage(Component.nullToEmpty("It's out of charge..."),true);
             level.playSound(null, pContext.getClickedPos(), SoundEvents.UI_TOAST_IN, SoundSource.BLOCKS, 1.0F, 1.0F);

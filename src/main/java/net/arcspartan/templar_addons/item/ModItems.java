@@ -2,6 +2,8 @@ package net.arcspartan.templar_addons.item;
 
 import net.arcspartan.templar_addons.TemplarAddonsMod;
 import net.arcspartan.templar_addons.item.custom.EnchanterItem;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.commands.data.DataCommands;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -70,9 +72,33 @@ public class ModItems {
 
 
     public static final RegistryObject<Item> INFUSION_ROD = ITEMS.register("infusion_rod",
-            () -> new EnchanterItem(new Item.Properties().setId(ITEMS.key("infusion_rod"))
-                    .durability(33))
-            );
+            () -> new EnchanterItem(new Item.Properties()
+                    .setId(ITEMS.key("infusion_rod"))
+                    .durability(33)
+            )
+    );
+
+
+    public static final RegistryObject<Item> INFUSED_SILVER_INGOT = ITEMS.register("infused_silver_ingot",
+            () -> new Item(new Item.Properties()
+                    .setId(ITEMS.key("infused_silver_ingot"))
+                    .stacksTo(64)
+            )
+    );
+
+    public static final RegistryObject<Item> INFUSED_ELECTRUM_INGOT = ITEMS.register("infused_electrum_ingot",
+            () -> new Item(new Item.Properties()
+                    .setId(ITEMS.key("infused_electrum_ingot"))
+                    .stacksTo(64)
+            )
+    );
+
+    public static final RegistryObject<Item> INFUSED_LAPIS = ITEMS.register("infused_lapis_lazuli",
+            () -> new Item(new Item.Properties()
+                    .setId(ITEMS.key("infused_lapis_lazuli"))
+                    .stacksTo(64)
+            )
+    );
 
 
 

@@ -7,6 +7,9 @@
 
     "item.templar_addons.silver_ingot": "Silver Ingot",
     "item.templar_addons.electrum_ingot": "Electrum Ingot",
+    "item.templar_addons.infused_silver_ingot": "Infused Silver Ingot",
+    "item.templar_addons.infused_electrum_ingot": "Infused Electrum Ingot",
+    "item.templar_addons.infused_lapis_lazuli": "Infused Lapis",
 
 
     "item.templar_addons.crude_mana_crystal": "Crude Mana Crystal",
@@ -20,9 +23,13 @@
 
 
     "item.templar_addons.raw_mana_crystal_block": "Raw Mana Crystal Block",
+    "item.templar_addons.raw_silver_block": "Raw Silver Block",
+    "item.templar_addons.raw_electrum_block": "Raw Electrum Block",
+
     "item.templar_addons.silver_block": "Silver Block",
     "item.templar_addons.electrum_block": "Electrum Block",
-    "item.templar_addons.imbued_electrum_block": "Imbued Electrum Block",
+    "item.templar_addons.infused_electrum_block": "Infused Electrum Block",
+    "item.templar_addons.blasted_smooth_stone": "Blasted Smooth Stone",
 
 
     "item.templar_addons.infusion_rod": "Mana Infusion Rod",

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "templar_addons:block/imbued_electrum_block"
+    "all": "templar_addons:block/infused_electrum_block"
   }
 }

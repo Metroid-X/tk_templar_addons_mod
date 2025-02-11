@@ -3,12 +3,13 @@ package net.arcspartan.templar_addons.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.arcspartan.templar_addons.block.ModBlocks;
 import net.arcspartan.templar_addons.item.ModItems;
+import net.arcspartan.templar_addons.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.network.chat.numbers.NumberFormat;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -29,14 +31,17 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.coremod.api.ASMAPI;
-import net.minecraftforge.unsafe.UnsafeFieldAccess;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.ForgeItemTagsProvider;
 
 import javax.annotation.Nullable;
 import java.util.Map;
+import java.util.stream.Stream;
 
 
 public class InfusionTableBlock extends Block {
+
+
 
 
 
@@ -122,8 +127,42 @@ public class InfusionTableBlock extends Block {
 
     @Override
     protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+        if(isInfusionItem(pStack)) {
+            int currentCharge = pState.getValue(CHARGE);
 
-        if(canBeCharged(pState) && isAnyMana(pStack)) {
+            if(pStack.is(ModTags.Items.MANA_1) && currentCharge >= 1){
+                dischargeMana(pPlayer,pLevel,pPos,pState,1);
+                pStack.consume(1,pPlayer);
+
+            } else if(pStack.is(ModTags.Items.MANA_2) && currentCharge >= 2){
+                dischargeMana(pPlayer,pLevel,pPos,pState,2);
+                pStack.consume(1,pPlayer);
+
+                if
+                (pStack.is(ModTags.Items.INGOTS_SILVER)){
+                    pPlayer.addItem(ModItems.INFUSED_LAPIS.get().getDefaultInstance());
+                }
+            } else if(pStack.is(ModTags.Items.MANA_4) && currentCharge >= 4){
+                dischargeMana(pPlayer,pLevel,pPos,pState,4);
+                pStack.consume(1,pPlayer);
+
+                if
+                (pStack.is(Tags.Items.GEMS_LAPIS)){
+                    pPlayer.addItem(ModItems.INFUSED_LAPIS.get().getDefaultInstance());
+                }
+                else if
+                (pStack.is(ModTags.Items.INGOTS_ELECTRUM)) {
+                    pPlayer.addItem(ModItems.INFUSED_ELECTRUM_INGOT.get().getDefaultInstance());
+                }
+
+
+            } else if(pStack.is(ModTags.Items.MANA_8) && currentCharge >= 8){
+                dischargeMana(pPlayer,pLevel,pPos,pState,8);
+                pStack.consume(1,pPlayer);
+
+            }
+            return InteractionResult.SUCCESS;
+        } else if(canBeCharged(pState) && isAnyMana(pStack)) {
             if(isRawMana(pStack)) {
                 chargeRawMana(pPlayer, pLevel, pPos, pState);
             } else if (isCrudeMana(pStack)) {
@@ -142,6 +181,10 @@ public class InfusionTableBlock extends Block {
 
     }
 
+    private static boolean isInfusionItem(ItemStack item) {
+        return item.is(ModTags.Items.INFUSION_ITEMS);
+    }
+
     private static boolean isRawMana(ItemStack pStack) {
         return pStack.is(ModItems.RAW_MANA_CRYSTAL.get());
     }
@@ -155,12 +198,27 @@ public class InfusionTableBlock extends Block {
     }
 
     private static boolean  isAnyMana(ItemStack pStack) {
-        return (isRawMana(pStack)||isCrudeMana(pStack)||isRefinedMana(pStack));
+        return pStack.is(ModTags.Items.MANA_TYPES);
     }
-
 
     private static boolean canBeCharged(BlockState pState) {
         return pState.getValue(CHARGE) < 64;
+    }
+
+    private static void dischargeMana(@Nullable Player pEntity, Level pLevel, BlockPos pPos, BlockState pState, Integer pCost) {
+        BlockState blockstate = pState.setValue(CHARGE, Integer.valueOf(pState.getValue(CHARGE) - pCost));
+        pLevel.setBlock(pPos, blockstate, 3);
+        pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pEntity, blockstate));
+        pLevel.playSound(
+                null,
+                (double)pPos.getX() + 0.5,
+                (double)pPos.getY() + 0.5,
+                (double)pPos.getZ() + 0.5,
+                SoundEvents.ENCHANTMENT_TABLE_USE,
+                SoundSource.BLOCKS,
+                1.0F,
+                1.0F
+        );
     }
 
     public static void chargeRawMana(@Nullable Entity pEntity, Level pLevel, BlockPos pPos, BlockState pState) {
@@ -231,6 +289,10 @@ public class InfusionTableBlock extends Block {
 
 
 
+
+
+
+
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if (pState.getValue(CHARGE) != 0) {
@@ -264,7 +326,6 @@ public class InfusionTableBlock extends Block {
     protected int getAnalogOutputSignal(BlockState pBlockState, Level pLevel, BlockPos pPos) {
         return getScaledChargeLevel(pBlockState, 15);
     }
-
 
 
 }
