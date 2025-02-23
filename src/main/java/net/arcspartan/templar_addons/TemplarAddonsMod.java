@@ -2,8 +2,11 @@ package net.arcspartan.templar_addons;
 
 import com.mojang.logging.LogUtils;
 import net.arcspartan.templar_addons.block.ModBlocks;
+import net.arcspartan.templar_addons.entity.ModEntities;
+import net.arcspartan.templar_addons.entity.client.KeidranRenderer;
 import net.arcspartan.templar_addons.item.ModCreativeModeTabs;
 import net.arcspartan.templar_addons.item.ModItems;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,6 +41,11 @@ public class TemplarAddonsMod {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+
+
+        ModEntities.register(modEventBus);
+
+
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
@@ -66,7 +74,7 @@ public class TemplarAddonsMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            EntityRenderers.register(ModEntities.KEIDRAN.get(), KeidranRenderer::new);
         }
     }
 }

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "infused_silver_ingot",
+  "ingredients": [
+    "templar_addons:infused_silver_block"
+  ],
+  "result": {
+    "id": "templar_addons:infused_silver_ingot",
+    "count": 9
+  }
+}

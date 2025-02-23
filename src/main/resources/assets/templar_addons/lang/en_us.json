@@ -28,9 +28,12 @@
 
     "item.templar_addons.silver_block": "Silver Block",
     "item.templar_addons.electrum_block": "Electrum Block",
+    "item.templar_addons.infused_silver_block": "Infused Electrum Block",
     "item.templar_addons.infused_electrum_block": "Infused Electrum Block",
     "item.templar_addons.blasted_smooth_stone": "Blasted Smooth Stone",
 
+
+    "item.templar_addons.tiger_keidran_spawn_egg": "Tiger Keidran Spawn Egg",
 
     "item.templar_addons.infusion_rod": "Mana Infusion Rod",
     "item.templar_addons.infusion_table": "Mana Infusion Table",
@@ -41,5 +44,6 @@
     "creativetab.templar_addons.templar_magic": "Templar Mod Magic Items",
     "creativetab.templar_addons.templar_spells": "Templar Mod Spells",
     "creativetab.templar_addons.spell_components": "Templar Spell Components",
-    "creativetab.templar_addons.templar_magic_blocks": "Templar Magic Blocks"
+    "creativetab.templar_addons.templar_magic_blocks": "Templar Magic Blocks",
+    "creativetab.templar_addons.templar_mobs": "Templar Mobs"
 }

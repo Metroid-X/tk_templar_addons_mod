@@ -46,8 +46,18 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.RAW_ELECTRUM_BLOCK.get());
                         output.accept(ModBlocks.SILVER_BLOCK.get());
                         output.accept(ModBlocks.ELECTRUM_BLOCK.get());
+                        output.accept(ModBlocks.INFUSED_SILVER_BLOCK.get());
                         output.accept(ModBlocks.INFUSED_ELECTRUM_BLOCK.get());
                         output.accept(ModBlocks.BLASTED_SMOOTH_STONE.get());
+
+                    }).build());
+
+    public static final RegistryObject<CreativeModeTab> TEMPLAR_MOBS_TAB = CREATIVE_MODE_TABS.register("templar_mobs_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.RAW_MANA_CRYSTAL_BLOCK.get()))
+                    .title(Component.translatable("creativetab.templar_addons.templar_mobs"))
+                    .displayItems((itemDisplayParameters, output) -> {
+
+                        output.accept(ModItems.TIGER_KEIDRAN_SPAWN_EGG.get());
 
                     }).build());
 

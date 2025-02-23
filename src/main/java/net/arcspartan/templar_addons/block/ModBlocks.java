@@ -83,6 +83,13 @@ public class ModBlocks {
             )
     );
 
+    public static final RegistryObject<Block> INFUSED_SILVER_BLOCK = registerBlock("infused_silver_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .setId(BLOCKS.key("infused_silver_block"))
+                    .requiresCorrectToolForDrops().strength(4.0f).sound(SoundType.COPPER)
+            )
+    );
+
     public static final RegistryObject<Block> INFUSED_ELECTRUM_BLOCK = registerBlock("infused_electrum_block",
             () -> new Block(BlockBehaviour.Properties.of()
                     .setId(BLOCKS.key("infused_electrum_block"))

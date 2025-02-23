@@ -49,6 +49,8 @@ public class ModTags {
         public static final TagKey<Item> INGOTS_SILVER = createForgeTag("ingots/silver");
         public static final TagKey<Item> INGOTS_ELECTRUM = createForgeTag("ingots/electrum");
         public static final TagKey<Item> MANA_GEM_CENTER = createTag("mana_gem_center");
+        public static final TagKey<Item> KEIDRAN_PICKS_UP = createTag("keidran_picks_up");
+        public static final TagKey<Item> KEIDRAN_CAN_EAT = createTag("keidran_can_eat");
 
 
 

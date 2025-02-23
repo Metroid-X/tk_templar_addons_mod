@@ -16,6 +16,7 @@
 
     "templar_addons:silver_block",
     "templar_addons:electrum_block",
-    "templar_addons:imbued_electrum_block"
+    "templar_addons:infused_silver_block",
+    "templar_addons:infused_electrum_block"
   ]
 }
