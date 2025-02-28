@@ -10,7 +10,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-public class KeidranModel extends EntityModel<KeidranRenderState> {
+public class KeidranFelineModel extends EntityModel<KeidranRenderState> {
 
     private static final float MAX_WALK_ANIMATION_SPEED = 2.0F;
     private static final float WALK_ANIMATION_SCALE_FACTOR = 2.5F;
@@ -26,7 +26,7 @@ public class KeidranModel extends EntityModel<KeidranRenderState> {
     private final ModelPart body;
     private final ModelPart head;
 
-    public KeidranModel(ModelPart pRoot) {
+    public KeidranFelineModel(ModelPart pRoot) {
         super(pRoot);
         this.body = pRoot.getChild("body");
         this.head =

@@ -1,0 +1,245 @@
+package net.arcspartan.templar_addons.entity.npc;
+
+import com.google.common.collect.Maps;
+import net.arcspartan.templar_addons.TemplarAddonsMod;
+import net.arcspartan.templar_addons.core.BuiltInTemplarRegistries;
+import net.minecraft.Util;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.npc.VillagerType;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+
+import java.util.Map;
+
+public final class KeidranType {
+
+    public static final KeidranType CANINE =    register("canine");
+    public static final KeidranType BIG_CAT =   register("big_cat");
+    public static final KeidranType MED_CAT =   register("med_cat");
+    public static final KeidranType SMALL_CAT = register("small_cat");
+    public static final KeidranType VULPINE =     register("vulpine");
+    private final String name;
+
+    
+    public final class KeidranCanineType {
+        // CANINES
+        public static final KeidranCanineType FOREST_WOLF = register("forest_wolf");
+        public static final KeidranCanineType ARCTIC_WOLF = register("arctic_wolf");
+        public static final KeidranCanineType GRAY_WOLF = register("gray_wolf");
+        public static final KeidranCanineType BROWN_WOLF = register("brown_wolf");
+        public static final KeidranCanineType COYOTE = register("coyote");
+        public static final KeidranCanineType JACKAL = register("jackal");
+        public static final KeidranCanineType PAINTED_DOG = register("painted_dog");
+        public static final KeidranCanineType DOG = register("dog");
+        private final String name;
+
+
+
+        private static final Map<ResourceKey<Biome>, KeidranCanineType> CANINE_BY_BIOME = Util.make(Maps.newHashMap(), hashMap -> {
+            hashMap.put(Biomes.BADLANDS, DESERT);
+            hashMap.put(Biomes.DESERT, DESERT);
+            hashMap.put(Biomes.ERODED_BADLANDS, DESERT);
+            hashMap.put(Biomes.WOODED_BADLANDS, DESERT);
+            hashMap.put(Biomes.BAMBOO_JUNGLE, JUNGLE);
+            hashMap.put(Biomes.JUNGLE, JUNGLE);
+            hashMap.put(Biomes.SPARSE_JUNGLE, JUNGLE);
+            hashMap.put(Biomes.SAVANNA_PLATEAU, SAVANNA);
+            hashMap.put(Biomes.SAVANNA, SAVANNA);
+            hashMap.put(Biomes.WINDSWEPT_SAVANNA, SAVANNA);
+            hashMap.put(Biomes.DEEP_FROZEN_OCEAN, SNOW);
+            hashMap.put(Biomes.FROZEN_OCEAN, SNOW);
+            hashMap.put(Biomes.FROZEN_RIVER, SNOW);
+            hashMap.put(Biomes.ICE_SPIKES, SNOW);
+            hashMap.put(Biomes.SNOWY_BEACH, SNOW);
+            hashMap.put(Biomes.SNOWY_TAIGA, SNOW);
+            hashMap.put(Biomes.SNOWY_PLAINS, SNOW);
+            hashMap.put(Biomes.GROVE, SNOW);
+            hashMap.put(Biomes.SNOWY_SLOPES, SNOW);
+            hashMap.put(Biomes.FROZEN_PEAKS, SNOW);
+            hashMap.put(Biomes.JAGGED_PEAKS, SNOW);
+            hashMap.put(Biomes.SWAMP, PLAINS);
+            hashMap.put(Biomes.MANGROVE_SWAMP, PLAINS);
+            hashMap.put(Biomes.OLD_GROWTH_SPRUCE_TAIGA, TAIGA);
+            hashMap.put(Biomes.OLD_GROWTH_PINE_TAIGA, TAIGA);
+            hashMap.put(Biomes.WINDSWEPT_GRAVELLY_HILLS, TAIGA);
+            hashMap.put(Biomes.WINDSWEPT_HILLS, TAIGA);
+            hashMap.put(Biomes.TAIGA, TAIGA);
+            hashMap.put(Biomes.WINDSWEPT_FOREST, TAIGA);
+        });
+
+        public KeidranCanineType(String pName) {
+            this.name = pName;
+        }
+
+        @Override
+        public String toString() {
+            return this.name;
+        }
+        
+        private static KeidranCanineType register(String pKey) {
+            return Registry.register(
+                    BuiltInTemplarRegistries.KEIDRAN_CANINE_TYPE, ResourceLocation.withDefaultNamespace(
+                            pKey
+                    ), new KeidranCanineType(pKey)
+            );
+        }
+    }
+    public final class KeidranFelineType {
+        // FELINES
+        public static final KeidranFelineType TIGER  = register("tiger");
+        public static final KeidranFelineType SNOW_LEOPARD = register("snow_leopard");
+        public static final KeidranFelineType LEOPARD = register("leopard");
+        public static final KeidranFelineType COUGAR = register("cougar");
+        public static final KeidranFelineType JAGUAR = register("jaguar");
+        public static final KeidranFelineType CHEETAH = register("cheetah");
+        public static final KeidranFelineType WHITE_TIGER = register("white_tiger");
+        public static final KeidranFelineType SERVAL = register("serval");
+        public static final KeidranFelineType LYNX = register("lynx");
+        public static final KeidranFelineType CAT = register("cat");
+        private final String name;
+
+
+        private static final Map<ResourceKey<Biome>, KeidranFelineType> FELINE_BY_BIOME = Util.make(Maps.newHashMap(), hashMap -> {
+            hashMap.put(Biomes.BADLANDS, COUGAR);
+            hashMap.put(Biomes.DESERT, COUGAR);
+            hashMap.put(Biomes.ERODED_BADLANDS, COUGAR);
+            hashMap.put(Biomes.WOODED_BADLANDS, COUGAR);
+            hashMap.put(Biomes.BAMBOO_JUNGLE, TIGER);
+            hashMap.put(Biomes.JUNGLE, TIGER);
+            hashMap.put(Biomes.SPARSE_JUNGLE, TIGER);
+            hashMap.put(Biomes.SAVANNA_PLATEAU, LEOPARD);
+            hashMap.put(Biomes.SAVANNA, LEOPARD);
+            hashMap.put(Biomes.WINDSWEPT_SAVANNA, LEOPARD);
+            hashMap.put(Biomes.DEEP_FROZEN_OCEAN, WHITE_TIGER);
+            hashMap.put(Biomes.FROZEN_OCEAN, WHITE_TIGER);
+            hashMap.put(Biomes.FROZEN_RIVER, WHITE_TIGER);
+            hashMap.put(Biomes.ICE_SPIKES, SNOW_LEOPARD);
+            hashMap.put(Biomes.SNOWY_BEACH, WHITE_TIGER);
+            hashMap.put(Biomes.SNOWY_TAIGA, LYNX);
+            hashMap.put(Biomes.SNOWY_PLAINS, LYNX);
+            hashMap.put(Biomes.GROVE, LYNX);
+            hashMap.put(Biomes.SNOWY_SLOPES, SNOW_LEOPARD);
+            hashMap.put(Biomes.FROZEN_PEAKS, SNOW_LEOPARD);
+            hashMap.put(Biomes.JAGGED_PEAKS, SNOW_LEOPARD);
+            hashMap.put(Biomes.SWAMP, JAGUAR);
+            hashMap.put(Biomes.MANGROVE_SWAMP, JAGUAR);
+            hashMap.put(Biomes.OLD_GROWTH_SPRUCE_TAIGA, LYNX);
+            hashMap.put(Biomes.OLD_GROWTH_PINE_TAIGA, LYNX);
+            hashMap.put(Biomes.WINDSWEPT_GRAVELLY_HILLS, COUGAR);
+            hashMap.put(Biomes.WINDSWEPT_HILLS, COUGAR);
+            hashMap.put(Biomes.TAIGA, LYNX);
+            hashMap.put(Biomes.WINDSWEPT_FOREST, COUGAR);
+        });
+
+        public KeidranFelineType(String pName) {
+            this.name = pName;
+        }
+
+        @Override
+        public String toString() {
+            return this.name;
+        }
+        
+        private static KeidranFelineType register(String pKey) {
+            return Registry.register(
+                    BuiltInTemplarRegistries.KEIDRAN_FELINE_TYPE, ResourceLocation.withDefaultNamespace(
+                            pKey
+                    ), new KeidranFelineType(pKey)
+            );
+        }
+    }
+
+    public final class KeidranVulpineType {
+        // FOXES
+        public static final KeidranVulpineType RED_FOX = register("red_fox");
+        public static final KeidranVulpineType ARCTIC_FOX = register("arctic_fox");
+        public static final KeidranVulpineType BROWN_FOX = register("brown_fox");
+        public static final KeidranVulpineType SILVER_BACKED_FOX = register("silver_backed_fox");
+        public static final KeidranVulpineType FENNEC_FOX = register("fennec_fox");
+        private final String name;
+
+
+        private static final Map<ResourceKey<Biome>, KeidranVulpineType> VULPINE_BY_BIOME = Util.make(Maps.newHashMap(), hashMap -> {
+            hashMap.put(Biomes.BADLANDS, FENNEC_FOX);
+            hashMap.put(Biomes.DESERT, FENNEC_FOX);
+            hashMap.put(Biomes.ERODED_BADLANDS, FENNEC_FOX);
+            hashMap.put(Biomes.WOODED_BADLANDS, FENNEC_FOX);
+            hashMap.put(Biomes.BAMBOO_JUNGLE, JUNGLE);
+            hashMap.put(Biomes.JUNGLE, JUNGLE);
+            hashMap.put(Biomes.SPARSE_JUNGLE, JUNGLE);
+            hashMap.put(Biomes.SAVANNA_PLATEAU, SAVANNA);
+            hashMap.put(Biomes.SAVANNA, SAVANNA);
+            hashMap.put(Biomes.WINDSWEPT_SAVANNA, SAVANNA);
+            hashMap.put(Biomes.DEEP_FROZEN_OCEAN, SNOW);
+            hashMap.put(Biomes.FROZEN_OCEAN, SNOW);
+            hashMap.put(Biomes.FROZEN_RIVER, SNOW);
+            hashMap.put(Biomes.ICE_SPIKES, SNOW);
+            hashMap.put(Biomes.SNOWY_BEACH, SNOW);
+            hashMap.put(Biomes.SNOWY_TAIGA, SNOW);
+            hashMap.put(Biomes.SNOWY_PLAINS, SNOW);
+            hashMap.put(Biomes.GROVE, SNOW);
+            hashMap.put(Biomes.SNOWY_SLOPES, SNOW);
+            hashMap.put(Biomes.FROZEN_PEAKS, SNOW);
+            hashMap.put(Biomes.JAGGED_PEAKS, SNOW);
+            hashMap.put(Biomes.SWAMP, PLAINS);
+            hashMap.put(Biomes.MANGROVE_SWAMP, PLAINS);
+            hashMap.put(Biomes.OLD_GROWTH_SPRUCE_TAIGA, TAIGA);
+            hashMap.put(Biomes.OLD_GROWTH_PINE_TAIGA, TAIGA);
+            hashMap.put(Biomes.WINDSWEPT_GRAVELLY_HILLS, TAIGA);
+            hashMap.put(Biomes.WINDSWEPT_HILLS, TAIGA);
+            hashMap.put(Biomes.TAIGA, TAIGA);
+            hashMap.put(Biomes.WINDSWEPT_FOREST, TAIGA);
+        });
+
+        public KeidranVulpineType(String pName) {
+            this.name = pName;
+        }
+
+        @Override
+        public String toString() {
+            return this.name;
+        }
+        
+        private static KeidranVulpineType register(String pKey) {
+            return Registry.register(
+                    BuiltInTemplarRegistries.KEIDRAN_VULPINE_TYPE, ResourceLocation.withDefaultNamespace(
+                            pKey
+                    ), new KeidranVulpineType(pKey)
+            );
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    public KeidranType(String pName) {
+        this.name = pName;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    private static KeidranType register(String pKey) {
+        return Registry.register(
+                BuiltInTemplarRegistries.KEIDRAN_TYPE, ResourceLocation.withDefaultNamespace(
+                        pKey
+                ), new KeidranType(pKey)
+        );
+    }
+
+}

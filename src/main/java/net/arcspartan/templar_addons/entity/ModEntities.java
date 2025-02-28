@@ -1,7 +1,7 @@
 package net.arcspartan.templar_addons.entity;
 
 import net.arcspartan.templar_addons.TemplarAddonsMod;
-import net.arcspartan.templar_addons.entity.npc.KeidranEntity;
+import net.arcspartan.templar_addons.entity.custom.FelineKeidran;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -17,14 +17,14 @@ public class ModEntities {
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, TemplarAddonsMod.MOD_ID);
 
 
-    public static final RegistryObject<EntityType<KeidranEntity>> KEIDRAN =
-            ENTITY_TYPES.register("keidran", () -> EntityType.Builder.of(KeidranEntity::new, MobCategory.CREATURE)
+    public static final RegistryObject<EntityType<FelineKeidran>> KEIDRAN_TIGER =
+            ENTITY_TYPES.register("tiger_keidran", () -> EntityType.Builder.of(FelineKeidran::new, MobCategory.CREATURE)
                     .sized(0.6F, 1.8F)
                     .eyeHeight(1.72F)
                     .build(ResourceKey
                             .create(Registries
                                     .ENTITY_TYPE, ResourceLocation
-                                    .fromNamespaceAndPath(TemplarAddonsMod.MOD_ID, "keidran")
+                                    .fromNamespaceAndPath(TemplarAddonsMod.MOD_ID, "tiger_keidran")
                             )
                     )
             );

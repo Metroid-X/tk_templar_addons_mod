@@ -113,7 +113,7 @@ public class ModItems {
 
 
     public static final RegistryObject<Item> TIGER_KEIDRAN_SPAWN_EGG = ITEMS.register("tiger_keidran_spawn_egg",
-            () -> new SpawnEggItem(ModEntities.KEIDRAN.get(), new Item.Properties()
+            () -> new SpawnEggItem(ModEntities.KEIDRAN_TIGER.get(), new Item.Properties()
                     .setId(ITEMS.key("tiger_keidran_spawn_egg"))
                     .stacksTo(64)
 

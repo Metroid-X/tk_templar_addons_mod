@@ -1,0 +1,40 @@
+package net.arcspartan.templar_addons.entity;
+
+import net.minecraft.network.syncher.SynchedEntityData;
+
+public interface BrainBehavior {
+
+    void setLastMatedNow();
+
+    default boolean isMale()
+    {
+        return getGender().isMale();
+    }
+
+    SynchedEntityData getEntityData();
+
+    /**
+     * @return {@code true} if this animal is a female.
+     */
+    default boolean isFemale()
+    {
+        return getGender().isFemale();
+    }
+
+    /**
+     * @return The gender of this animal.
+     */
+    default KeidranGender getGender()
+    {
+        return getEntityData().get(animalData().gender()) ? KeidranGender.MALE : KeidranGender.FEMALE;
+    }
+
+    /**
+     * Set the gender of this animal.
+     */
+    default void setGender(KeidranGender gender)
+    {
+        getEntityData().set(animalData().KeidranGender(), KeidranGender.isMale());
+    }
+
+}

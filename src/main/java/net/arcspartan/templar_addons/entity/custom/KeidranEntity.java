@@ -1,11 +1,15 @@
-package net.arcspartan.templar_addons.entity.npc;
+package net.arcspartan.templar_addons.entity.custom;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import net.arcspartan.templar_addons.entity.KeidranBustSizes;
+import net.arcspartan.templar_addons.entity.KeidranGender;
 import net.arcspartan.templar_addons.entity.ModEntities;
 import net.arcspartan.templar_addons.util.ModTags;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -15,37 +19,59 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.behavior.VillagerGoalPackages;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import net.minecraft.world.entity.ai.memory.MemoryStatus;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.entity.ai.sensing.Sensor;
+import net.minecraft.world.entity.ai.sensing.SensorType;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.ai.util.GoalUtils;
-import net.minecraft.world.entity.ai.village.ReputationEventType;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.WolfVariant;
+import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.npc.*;
+import net.minecraft.world.entity.npc.InventoryCarrier;
+import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.schedule.Activity;
+import net.minecraft.world.entity.schedule.Schedule;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.pathfinder.PathType;
 
 import javax.annotation.Nullable;
+
 import java.util.Map;
 import java.util.UUID;
 
-public class KeidranEntityNpc extends AbstractVillager implements ReputationEventHandler, VillagerDataHolder, NeutralMob {
+public class KeidranEntity extends AgeableMob implements NeutralMob, InventoryCarrier {
+
+
+
+    private static final EntityDataAccessor<Integer> VARIANT =
+            SynchedEntityData.defineId(KeidranEntity.class, EntityDataSerializers.INT);
+
+    private static final EntityDataAccessor<Integer> GENDER =
+            SynchedEntityData.defineId(KeidranEntity.class, EntityDataSerializers.INT);
+
+    private static final EntityDataAccessor<Integer> BUST =
+            SynchedEntityData.defineId(KeidranEntity.class, EntityDataSerializers.INT);
+
     public static final int BREEDING_MEAT_THRESHOLD = 15;
-    private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(KeidranEntityNpc.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(KeidranEntity.class, EntityDataSerializers.INT);
     public static final Map<Item, Integer> MEAT_POINTS =
             ImmutableMap.of(
                     Items.PORKCHOP, 4,
@@ -62,6 +88,34 @@ public class KeidranEntityNpc extends AbstractVillager implements ReputationEven
     private int meatLevel;
 
 
+    private static final ImmutableList<MemoryModuleType<?>> MEMORY_TYPES = ImmutableList.of(
+            MemoryModuleType.HOME,
+            MemoryModuleType.JOB_SITE,
+            MemoryModuleType.POTENTIAL_JOB_SITE,
+            MemoryModuleType.MEETING_POINT,
+            MemoryModuleType.NEAREST_LIVING_ENTITIES,
+            MemoryModuleType.NEAREST_VISIBLE_LIVING_ENTITIES,
+            MemoryModuleType.NEAREST_PLAYERS,
+            MemoryModuleType.NEAREST_VISIBLE_PLAYER,
+            MemoryModuleType.NEAREST_VISIBLE_ATTACKABLE_PLAYER,
+            MemoryModuleType.NEAREST_VISIBLE_WANTED_ITEM,
+            MemoryModuleType.ITEM_PICKUP_COOLDOWN_TICKS,
+            MemoryModuleType.WALK_TARGET,
+            MemoryModuleType.LOOK_TARGET,
+            MemoryModuleType.INTERACTION_TARGET,
+            MemoryModuleType.BREED_TARGET,
+            MemoryModuleType.PATH,
+            MemoryModuleType.DOORS_TO_CLOSE,
+            MemoryModuleType.NEAREST_BED,
+            MemoryModuleType.LAST_WORKED_AT_POI
+    );
+    private static final ImmutableList<SensorType<? extends Sensor<? super KeidranEntity>>> SENSOR_TYPES = ImmutableList.of(
+            SensorType.NEAREST_LIVING_ENTITIES,
+            SensorType.NEAREST_PLAYERS,
+            SensorType.NEAREST_ITEMS,
+            SensorType.NEAREST_BED,
+            SensorType.HURT_BY
+    );
 
     public final TargetingConditions.Selector HUNT = (pEntity, pLevel) -> {
         EntityType<?> type = pEntity.getType();
@@ -94,22 +148,12 @@ public class KeidranEntityNpc extends AbstractVillager implements ReputationEven
     private int idleAnimationTimeout = 0;
 
 
-    @Override
-    protected void defineSynchedData(SynchedEntityData.Builder p_332186_) {
-        super.defineSynchedData(p_332186_);
-        RegistryAccess registryaccess = this.registryAccess();
-        Registry<WolfVariant> registry = registryaccess.lookupOrThrow(Registries.WOLF_VARIANT);
-
-        p_332186_.define(DATA_REMAINING_ANGER_TIME, 0);
-    }
-
-    @Override
-    protected void rewardTradeXp(MerchantOffer pOffer) {
-
-    }
 
 
-    public KeidranEntityNpc(EntityType<? extends KeidranEntityNpc> pEntityType, Level pLevel) {
+
+
+
+    public KeidranEntity(EntityType<? extends KeidranEntity> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.setCanPickUpLoot(true);
         this.applyOpenDoorsAbility();
@@ -160,21 +204,6 @@ public class KeidranEntityNpc extends AbstractVillager implements ReputationEven
                 ;
     }
 
-    public void addAdditionalSaveData(CompoundTag pCompound) {
-        super.addAdditionalSaveData(pCompound);
-        pCompound.putByte("MeatLevel", (byte)this.meatLevel);
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag pCompound) {
-        super.readAdditionalSaveData(pCompound);
-
-        if (pCompound.contains("MeatLevel", 1)) {
-            this.meatLevel = pCompound.getByte("MeatLevel");
-        }
-
-    }
-
     @Override
     public boolean removeWhenFarAway(double pDistanceToClosestPlayer) {
         return false;
@@ -186,7 +215,7 @@ public class KeidranEntityNpc extends AbstractVillager implements ReputationEven
 
     @Override
     public boolean canBreed() {
-        return this.meatLevel + this.countMeatPointsInInventory() >= 12 && !this.isSleeping() && this.getAge() == 0;
+        return this.meatLevel + this.countMeatPointsInInventory() >= 12 && !this.isSleeping() && this.getAge() == 0 ;
     }
 
     private boolean hungry() {
@@ -273,22 +302,18 @@ public class KeidranEntityNpc extends AbstractVillager implements ReputationEven
         return SoundEvents.CAT_DEATH;
     }
 
+
+
+
+
+
+
     @Nullable
     @Override
-    public KeidranEntityNpc getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
+    public KeidranEntity getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
         double d0 = this.random.nextDouble();
-        KeidranType keidrantype;
-        if (d0 < 0.5) {
-            keidrantype = KeidranType.byBiome(pLevel.getBiome(this.blockPosition()));
-        } else if (d0 < 0.75) {
-            keidrantype = this.getKeidranData().getType();
-        } else {
-            keidrantype = ((KeidranEntityNpc)pOtherParent).getKeidranData().getType();
-        }
 
-        KeidranEntityNpc keidran = new KeidranEntityNpc(ModEntities.KEIDRAN, pLevel, keidrantype);
-        keidran.finalizeSpawn(pLevel, pLevel.getCurrentDifficultyAt(keidran.blockPosition()), EntitySpawnReason.BREEDING, null);
-        return keidran;
+        return ModEntities.KEIDRAN_TIGER.get().create(pLevel,EntitySpawnReason.BREEDING);
     }
 
     @Override
@@ -325,11 +350,6 @@ public class KeidranEntityNpc extends AbstractVillager implements ReputationEven
     @Override
     public SimpleContainer getInventory() {
         return this.inventory;
-    }
-
-    @Override
-    protected void updateTrades() {
-
     }
 
     @Override
@@ -398,17 +418,109 @@ public class KeidranEntityNpc extends AbstractVillager implements ReputationEven
     }
 
     @Override
-    public void onReputationEventFrom(ReputationEventType pType, Entity pTarget) {
-
+    public Brain<KeidranEntity> getBrain() {
+        return (Brain<KeidranEntity>)super.getBrain();
+    }
+    @Override
+    protected Brain.Provider<KeidranEntity> brainProvider() {
+        return Brain.provider(MEMORY_TYPES, SENSOR_TYPES);
     }
 
     @Override
-    public VillagerData getVillagerData() {
-        return null;
+    protected Brain<?> makeBrain(Dynamic<?> pDynamic) {
+        Brain<KeidranEntity> brain = this.brainProvider().makeBrain(pDynamic);
+        this.registerBrainGoals(brain);
+        return brain;
+    }
+
+    public void refreshBrain(ServerLevel pServerLevel) {
+        Brain<KeidranEntity> brain = this.getBrain();
+        brain.stopAll(pServerLevel, this);
+        this.brain = brain.copyWithoutBehaviors();
+        this.registerBrainGoals(this.getBrain());
+    }
+
+
+    private void registerBrainGoals(Brain<KeidranEntity> pVillagerBrain) {
+        if (this.isBaby()) {
+            pVillagerBrain.setSchedule(Schedule.VILLAGER_BABY);
+        } else {
+            pVillagerBrain.setSchedule(Schedule.VILLAGER_DEFAULT);
+        }
+    }
+
+
+
+
+//  Variants
+
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+
+        pBuilder.define(GENDER, 0);
+        pBuilder.define(BUST, 0);
+        pBuilder.define(DATA_REMAINING_ANGER_TIME, 0);
+    }
+
+    private int getTypeGender() {
+        return this.entityData.get(GENDER);
+    }
+
+    public KeidranGender getGender() {
+        return KeidranGender.byId(this.getTypeGender() & 255);
+    }
+
+    private void setGender(KeidranGender pGender) {
+        this.entityData.set(GENDER, pGender.getId() & 255);
+    }
+
+    private int getTypeBust() {
+        return this.entityData.get(BUST);
+    }
+
+    public KeidranBustSizes getBust() {
+        return KeidranBustSizes.byId(this.getTypeBust() & 255);
+    }
+
+    private void setBust(KeidranBustSizes pBust) {
+        this.entityData.set(BUST, pBust.getId() & 255);
     }
 
     @Override
-    public void setVillagerData(VillagerData pData) {
-
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        pCompound.putInt("Gender", this.getTypeGender());
+        pCompound.putInt("Bust", this.getTypeBust());
+        pCompound.putByte("MeatLevel", (byte)this.meatLevel);
     }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+
+        if (pCompound.contains("MeatLevel", 1)) {
+            this.meatLevel = pCompound.getByte("MeatLevel");
+        }
+
+        this.entityData.set(GENDER, pCompound.getInt("Gender"));
+        this.entityData.set(BUST, pCompound.getInt("Bust"));
+    }
+
+
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty,
+                                        EntitySpawnReason pSpawnReason, @Nullable SpawnGroupData pSpawnGroupData) {
+        KeidranGender gender = Util.getRandom(KeidranGender.values(), this.random);
+        this.setGender(gender);
+        if(this.getGender() != KeidranGender.MALE) {
+            KeidranBustSizes bustSize = Util.getRandom(KeidranBustSizes.values(), this.random);
+            this.setBust(bustSize);
+        } else {
+            this.setBust(KeidranBustSizes.FLAT);
+        }
+        return super.finalizeSpawn(pLevel, pDifficulty, pSpawnReason, pSpawnGroupData);
+    }
+
 }

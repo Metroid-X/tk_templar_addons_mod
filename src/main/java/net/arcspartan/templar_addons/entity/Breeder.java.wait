@@ -1,0 +1,9 @@
+package net.arcspartan.templar_addons.entity;
+
+public interface Breeder {
+
+    boolean isMale();
+
+    void setMated(long var1);
+
+}

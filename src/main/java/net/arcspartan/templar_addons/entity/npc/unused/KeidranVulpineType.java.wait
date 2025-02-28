@@ -1,0 +1,82 @@
+package net.arcspartan.templar_addons.entity.npc.unused;
+
+import com.google.common.collect.Maps;
+import net.arcspartan.templar_addons.core.BuiltInTemplarRegistries;
+import net.minecraft.Util;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+
+import java.util.Map;
+
+public final class KeidranVulpineType {
+    // FOXES
+    public static final KeidranVulpineType RED_FOX = register("red_fox");
+    public static final KeidranVulpineType ARCTIC_FOX = register("arctic_fox");
+    public static final KeidranVulpineType CAPE_FOX = register("cape_fox");
+    public static final KeidranVulpineType FENNEC_FOX = register("fennec_fox");
+    public static final KeidranVulpineType GRAY_FOX = register("gray_fox");
+    private final String name;
+
+
+    private static final Map<ResourceKey<Biome>, KeidranVulpineType> VULPINE_BY_BIOME = Util.make(Maps.newHashMap(), hashMap -> {
+        hashMap.put(Biomes.BADLANDS, FENNEC_FOX);
+        hashMap.put(Biomes.DESERT, FENNEC_FOX);
+        hashMap.put(Biomes.ERODED_BADLANDS, FENNEC_FOX);
+        hashMap.put(Biomes.WOODED_BADLANDS, FENNEC_FOX);
+        hashMap.put(Biomes.BAMBOO_JUNGLE, GRAY_FOX);
+        hashMap.put(Biomes.JUNGLE, GRAY_FOX);
+        hashMap.put(Biomes.SPARSE_JUNGLE, GRAY_FOX);
+        hashMap.put(Biomes.SAVANNA_PLATEAU, CAPE_FOX);
+        hashMap.put(Biomes.SAVANNA, CAPE_FOX);
+        hashMap.put(Biomes.WINDSWEPT_SAVANNA, CAPE_FOX);
+        hashMap.put(Biomes.DEEP_FROZEN_OCEAN, ARCTIC_FOX);
+        hashMap.put(Biomes.FROZEN_OCEAN, ARCTIC_FOX);
+        hashMap.put(Biomes.FROZEN_RIVER, ARCTIC_FOX);
+        hashMap.put(Biomes.ICE_SPIKES, ARCTIC_FOX);
+        hashMap.put(Biomes.SNOWY_BEACH, ARCTIC_FOX);
+        hashMap.put(Biomes.SNOWY_TAIGA, ARCTIC_FOX);
+        hashMap.put(Biomes.SNOWY_PLAINS, ARCTIC_FOX);
+        hashMap.put(Biomes.GROVE, ARCTIC_FOX);
+        hashMap.put(Biomes.SNOWY_SLOPES, ARCTIC_FOX);
+        hashMap.put(Biomes.FROZEN_PEAKS, ARCTIC_FOX);
+        hashMap.put(Biomes.JAGGED_PEAKS, ARCTIC_FOX);
+        hashMap.put(Biomes.SWAMP, GRAY_FOX);
+        hashMap.put(Biomes.MANGROVE_SWAMP, GRAY_FOX);
+        hashMap.put(Biomes.OLD_GROWTH_SPRUCE_TAIGA, RED_FOX);
+        hashMap.put(Biomes.OLD_GROWTH_PINE_TAIGA, RED_FOX);
+        hashMap.put(Biomes.WINDSWEPT_GRAVELLY_HILLS, RED_FOX);
+        hashMap.put(Biomes.WINDSWEPT_HILLS, RED_FOX);
+        hashMap.put(Biomes.TAIGA, RED_FOX);
+        hashMap.put(Biomes.WINDSWEPT_FOREST, RED_FOX);
+    });
+
+    public KeidranVulpineType(String pName) {
+        this.name = pName;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    private static KeidranVulpineType register(String pKey) {
+        return Registry.register(
+                BuiltInTemplarRegistries.KEIDRAN_VULPINE_TYPE, ResourceLocation.withDefaultNamespace(
+                        pKey
+                ), new KeidranVulpineType(pKey)
+        );
+    }
+
+    public static KeidranVulpineType vulpineByBiome(Holder<Biome> pBiome) {
+        return pBiome.unwrapKey().map(VULPINE_BY_BIOME::get).orElse(RED_FOX);
+    }
+
+    /** FORGE: Registers the KeidranVulpineType that will spawn in the given biome. This method should be called during FMLCommonSetupEvent using event.enqueueWork() */
+    public static void registerVulpineBiomeType(ResourceKey<Biome> biomeKey, KeidranVulpineType keidranType) {
+        VULPINE_BY_BIOME.put(biomeKey, keidranType);
+    }
+}

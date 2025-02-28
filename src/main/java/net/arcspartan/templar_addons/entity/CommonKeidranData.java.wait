@@ -1,0 +1,80 @@
+package net.arcspartan.templar_addons.entity;
+
+import com.machinezoo.noexception.throwing.ThrowingRunnable;
+import com.machinezoo.noexception.throwing.ThrowingSupplier;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializer;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.ClassTreeIdRegistry;
+
+import java.lang.reflect.Field;
+
+import static net.minecraft.network.syncher.SynchedEntityData.defineId;
+
+public record CommonKeidranData(
+    EntityDataAccessor<Boolean> gender,
+    EntityDataAccessor<Integer> bust_size,
+    EntityDataAccessor<Integer> kind
+)
+{
+    public static CommonKeidranData create(Class<?> clazz) {
+        return new CommonKeidranData(
+                defineId(clazz, EntityDataSerializers.BOOLEAN),
+                defineId(clazz, EntityDataSerializers.INT),
+                defineId(clazz, EntityDataSerializers.INT)
+        );
+    }
+
+    private static final ClassTreeIdRegistry ID_REGISTRY = uncheck(() -> {
+        final Field field = SynchedEntityData.class.getDeclaredField("ID_REGISTRY");
+        field.setAccessible(true);
+        return field.get(null);
+    });
+
+    private static <T> EntityDataAccessor<T> defineId(Class<?> clazz, EntityDataSerializer<T> serializer)
+    {
+        final int id = ID_REGISTRY.define(clazz);
+        if (id > 254) throw new IllegalArgumentException("Data value id is too big with " + id + "! (Max is 254)");
+        return serializer.createAccessor(id);
+    }
+
+    public void define(SynchedEntityData.Builder builder)
+    {
+        builder
+                .define(gender, true)
+                .define(bust_size, 0)
+                .define(kind, 0);
+    }
+
+
+    @SuppressWarnings("unchecked")
+    public static <T> T uncheck(ThrowingSupplier<?> action)
+    {
+        try
+        {
+            return (T) action.get();
+        }
+        catch (Throwable e)
+        {
+            return throwAsUnchecked(e);
+        }
+    }
+
+    public static void uncheck(ThrowingRunnable action)
+    {
+        try
+        {
+            action.run();
+        }
+        catch (Throwable e)
+        {
+            throwAsUnchecked(e);
+        }
+    }
+    
+    public static <E extends Throwable, T> T throwAsUnchecked(Throwable exception) throws E
+    {
+        throw (E) exception;
+    }
+}

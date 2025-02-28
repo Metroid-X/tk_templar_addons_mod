@@ -74,7 +74,7 @@ public class TemplarAddonsMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            EntityRenderers.register(ModEntities.KEIDRAN.get(), KeidranRenderer::new);
+            EntityRenderers.register(ModEntities.KEIDRAN_TIGER.get(), KeidranRenderer::new);
         }
     }
 }

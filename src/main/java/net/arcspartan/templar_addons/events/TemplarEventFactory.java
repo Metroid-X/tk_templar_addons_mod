@@ -1,7 +1,5 @@
 package net.arcspartan.templar_addons.events;
 
-import net.arcspartan.templar_addons.entity.npc.AbstractKeidranEntity;
-import net.arcspartan.templar_addons.events.entity.player.TradeWithKeidranEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.common.MinecraftForge;
@@ -41,8 +39,8 @@ public final class TemplarEventFactory {
         ML.postEvent(e);
     }
 
-
-    public static void onPlayerTradeWithKeidran(Player player, MerchantOffer offer, AbstractKeidranEntity keidran) {
-        post(new TradeWithKeidranEvent(player, offer, keidran));
-    }
+//
+//    public static void onPlayerTradeWithKeidran(Player player, MerchantOffer offer, AbstractKeidranEntity keidran) {
+//        post(new TradeWithKeidranEvent(player, offer, keidran));
+//    }
 }

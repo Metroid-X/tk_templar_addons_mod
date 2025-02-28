@@ -1,0 +1,18 @@
+package net.arcspartan.templar_addons.entity.npc.unused;
+
+import net.minecraft.world.entity.VariantHolder;
+
+public interface KeidranVulpineDataHolder extends VariantHolder<KeidranVulpineType> {
+    KeidranVulpineData getKeidranVulpineData();
+
+    void setKeidranVulpineData(KeidranVulpineData pData);
+
+    default KeidranVulpineType getVariant() {
+        return this.getKeidranVulpineData().getType();
+    }
+
+    default void setVariant(KeidranVulpineType p_262647_) {
+        this.setKeidranVulpineData(this.getKeidranVulpineData().setType(p_262647_));
+    }
+
+}

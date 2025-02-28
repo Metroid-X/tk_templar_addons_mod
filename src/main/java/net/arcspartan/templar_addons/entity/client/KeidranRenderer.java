@@ -3,7 +3,7 @@ package net.arcspartan.templar_addons.entity.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.arcspartan.templar_addons.TemplarAddonsMod;
 import net.arcspartan.templar_addons.entity.client.state.KeidranRenderState;
-import net.arcspartan.templar_addons.entity.npc.KeidranEntity;
+import net.arcspartan.templar_addons.entity.custom.KeidranEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -11,11 +11,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class KeidranRenderer extends MobRenderer<KeidranEntity, KeidranRenderState, KeidranModel> {
+public class KeidranRenderer extends MobRenderer<KeidranEntity, KeidranRenderState, KeidranFelineModel> {
 
 
     public KeidranRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new KeidranModel(pContext.bakeLayer(KeidranModel.KEIDRAN)), 0.5F);
+        super(pContext, new KeidranFelineModel(pContext.bakeLayer(KeidranFelineModel.KEIDRAN)), 0.5F);
     }
 
     public KeidranRenderState createRenderState() {
@@ -34,6 +34,9 @@ public class KeidranRenderer extends MobRenderer<KeidranEntity, KeidranRenderSta
             pPoseStack.scale(1.0f, 1.0f, 1.0f);
         }
     }
+
+
+
 
     @Override
     public ResourceLocation getTextureLocation(KeidranRenderState renderState) {

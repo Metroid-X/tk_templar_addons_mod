@@ -1,0 +1,18 @@
+package net.arcspartan.templar_addons.entity.npc.unused;
+
+import net.minecraft.world.entity.VariantHolder;
+
+public interface KeidranCanineDataHolder extends VariantHolder<KeidranCanineType> {
+    KeidranCanineData getKeidranCanineData();
+
+    void setKeidranCanineData(KeidranCanineData pData);
+
+    default KeidranCanineType getVariant() {
+        return this.getKeidranCanineData().getType();
+    }
+
+    default void setVariant(KeidranCanineType p_262647_) {
+        this.setKeidranCanineData(this.getKeidranCanineData().setType(p_262647_));
+    }
+
+}

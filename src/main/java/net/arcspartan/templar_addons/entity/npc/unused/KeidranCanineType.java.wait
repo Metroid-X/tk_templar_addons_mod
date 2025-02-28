@@ -1,0 +1,85 @@
+package net.arcspartan.templar_addons.entity.npc.unused;
+
+import com.google.common.collect.Maps;
+import net.arcspartan.templar_addons.core.BuiltInTemplarRegistries;
+import net.minecraft.Util;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+
+import java.util.Map;
+public final class KeidranCanineType {
+    // CANINES
+    public static final KeidranCanineType FOREST_WOLF = register("forest_wolf");
+    public static final KeidranCanineType ARCTIC_WOLF = register("arctic_wolf");
+    public static final KeidranCanineType GRAY_WOLF = register("gray_wolf");
+    public static final KeidranCanineType COYOTE = register("coyote");
+    public static final KeidranCanineType JACKAL = register("jackal");
+    public static final KeidranCanineType DOG = register("dog");
+    private final String name;
+
+
+
+    private static final Map<ResourceKey<Biome>, KeidranCanineType> CANINE_BY_BIOME = Util.make(Maps.newHashMap(), hashMap -> {
+        hashMap.put(Biomes.FOREST, KeidranCanineType.GRAY_WOLF);
+        hashMap.put(Biomes.FLOWER_FOREST, KeidranCanineType.GRAY_WOLF);
+        hashMap.put(Biomes.BIRCH_FOREST, KeidranCanineType.GRAY_WOLF);
+        hashMap.put(Biomes.OLD_GROWTH_BIRCH_FOREST, KeidranCanineType.FOREST_WOLF);
+        hashMap.put(Biomes.BADLANDS, COYOTE);
+        hashMap.put(Biomes.DESERT, COYOTE);
+        hashMap.put(Biomes.ERODED_BADLANDS, COYOTE);
+        hashMap.put(Biomes.WOODED_BADLANDS, COYOTE);
+        hashMap.put(Biomes.JUNGLE, FOREST_WOLF);
+        hashMap.put(Biomes.SPARSE_JUNGLE, FOREST_WOLF);
+        hashMap.put(Biomes.SAVANNA_PLATEAU, JACKAL);
+        hashMap.put(Biomes.SAVANNA, JACKAL);
+        hashMap.put(Biomes.WINDSWEPT_SAVANNA, JACKAL);
+        hashMap.put(Biomes.DEEP_FROZEN_OCEAN, ARCTIC_WOLF);
+        hashMap.put(Biomes.FROZEN_OCEAN, ARCTIC_WOLF);
+        hashMap.put(Biomes.FROZEN_RIVER, ARCTIC_WOLF);
+        hashMap.put(Biomes.ICE_SPIKES, ARCTIC_WOLF);
+        hashMap.put(Biomes.SNOWY_BEACH, ARCTIC_WOLF);
+        hashMap.put(Biomes.SNOWY_TAIGA, ARCTIC_WOLF);
+        hashMap.put(Biomes.SNOWY_PLAINS, ARCTIC_WOLF);
+        hashMap.put(Biomes.GROVE, ARCTIC_WOLF);
+        hashMap.put(Biomes.SNOWY_SLOPES, ARCTIC_WOLF);
+        hashMap.put(Biomes.FROZEN_PEAKS, ARCTIC_WOLF);
+        hashMap.put(Biomes.JAGGED_PEAKS, ARCTIC_WOLF);
+        hashMap.put(Biomes.OLD_GROWTH_SPRUCE_TAIGA, GRAY_WOLF);
+        hashMap.put(Biomes.OLD_GROWTH_PINE_TAIGA, GRAY_WOLF);
+        hashMap.put(Biomes.WINDSWEPT_GRAVELLY_HILLS, GRAY_WOLF);
+        hashMap.put(Biomes.WINDSWEPT_HILLS, GRAY_WOLF);
+        hashMap.put(Biomes.TAIGA, GRAY_WOLF);
+        hashMap.put(Biomes.WINDSWEPT_FOREST, GRAY_WOLF);
+    });
+
+    public KeidranCanineType(String pName) {
+        this.name = pName;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    private static KeidranCanineType register(String pKey) {
+        return Registry.register(
+                BuiltInTemplarRegistries.KEIDRAN_CANINE_TYPE, ResourceLocation.withDefaultNamespace(
+                        pKey
+                ), new KeidranCanineType(pKey)
+        );
+    }
+
+    public static KeidranCanineType canineByBiome(Holder<Biome> pBiome) {
+        return pBiome.unwrapKey().map(CANINE_BY_BIOME::get).orElse(FOREST_WOLF);
+    }
+
+    /** FORGE: Registers the KeidranCanineType that will spawn in the given biome. This method should be called during FMLCommonSetupEvent using event.enqueueWork() */
+    public static void registerCanineBiomeType(ResourceKey<Biome> biomeKey, KeidranCanineType keidranType) {
+        CANINE_BY_BIOME.put(biomeKey, keidranType);
+    }
+
+}

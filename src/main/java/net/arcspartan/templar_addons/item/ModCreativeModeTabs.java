@@ -53,7 +53,7 @@ public class ModCreativeModeTabs {
                     }).build());
 
     public static final RegistryObject<CreativeModeTab> TEMPLAR_MOBS_TAB = CREATIVE_MODE_TABS.register("templar_mobs_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.RAW_MANA_CRYSTAL_BLOCK.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TIGER_KEIDRAN_SPAWN_EGG.get()))
                     .title(Component.translatable("creativetab.templar_addons.templar_mobs"))
                     .displayItems((itemDisplayParameters, output) -> {
 
